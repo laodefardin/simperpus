@@ -7,5 +7,6 @@ $id = $_GET['id'];
 
     $update = "UPDATE tb_guru set namalengkap='$namalengkap', telp='$telp' where id_guru= '$id' ";
     $sql = mysqli_query($koneksi, $update) or die(mysqli_error($koneksi));
-    $_SESSION['pesan'] = 'Ubah';
+    $_SESSION['pesan'] = 'Data Berhasil Di Ubah';
+    $_SESSION['status'] = 'success';
     echo "<script> document.location.href='./guru';</script>";

@@ -72,8 +72,8 @@ $kembali = date("Y-m-d", $tujuh_hari);
                                         value="<?php echo $kembali; ?>" hidden />
                                 </div>
 
-                                <input class="btn btn-primary" name="tambah" type="submit" value="Pinjam">
-                                <input class="btn btn-danger" id="reset" type="reset" value="Batal"
+                                <input class="btn btn-dark" name="tambah" type="submit" value="Pinjam">
+                                <input class="btn btn-secondary" id="reset" type="reset" value="Batal"
                                     onclick="self.history.back()">
                             </div>
                             <div class="col-md-4">

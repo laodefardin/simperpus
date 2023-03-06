@@ -62,7 +62,8 @@ include "global_header.php"; ?>
                     $koneksi->query($query1);
 
                     if ($proses){
-                        $_SESSION['pesan'] = 'Tambah';
+                        $_SESSION['pesan'] = 'Data Berhasil Di Tambah';
+                        $_SESSION['status'] = 'success';
                         echo "<script> document.location.href='./guru';</script>";
                     }
             }

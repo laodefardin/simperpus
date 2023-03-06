@@ -37,7 +37,8 @@ include "global_header.php"; ?>
                     $proses = $koneksi->query($query);
 
                     if ($proses){
-                        $_SESSION['pesan'] = 'Tambah';
+                        $_SESSION['pesan'] = 'Data Berhasil Di Tambah';
+                        $_SESSION['status'] = 'success';
                         echo "<script> document.location.href='./lokasibuku';</script>";
                     }
                 

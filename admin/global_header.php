@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Makassar');
 // mysqli_report (MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 	error_reporting(E_ALL ^ (E_NOTICE | E_WARNING)); 
 session_start();
@@ -12,6 +13,7 @@ if (!isset($_SESSION["username"])){
 $user = $_SESSION['username'];
 $level = $_SESSION['level'];
 $nama = $_SESSION['nama'];
+$id_users = $_SESSION["id_user"];
 
 $query = $koneksi->query("SELECT * FROM tb_pengguna WHERE username = '$user'");
 $row = $query->fetch_array();
@@ -52,9 +54,9 @@ if ($level === "Siswa"){
     <!-- Bootstrap4 Duallistbox -->
     <link rel="stylesheet" href="../assets/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
     <!-- BS Stepper -->
-    <link rel="stylesheet" href="../assets/plugins/bs-stepper/css/bs-stepper.min.css">
+    <!-- <link rel="stylesheet" href="../assets/plugins/bs-stepper/css/bs-stepper.min.css"> -->
     <!-- dropzonejs -->
-    <link rel="stylesheet" href="../assets/plugins/dropzone/min/dropzone.min.css">
+    <!-- <link rel="stylesheet" href="../assets/plugins/dropzone/min/dropzone.min.css"> -->
     <!-- Theme style -->
     <link rel="stylesheet" href="../assets/dist/css/adminlte.min.css">
     <!-- DataTables -->
@@ -62,7 +64,8 @@ if ($level === "Siswa"){
     <link rel="stylesheet" href="../assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <!-- IonIcons -->
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="../assets/icon.jpg" class="img-circle" type="image/x-icon" />
+
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -75,24 +78,27 @@ to get the desired effect
 |---------------------------------------------------------|
 -->
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini accent-lightblue">
     <div class="wrapper">
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-dark navbar-lightblue">
+        <nav class="main-header navbar navbar-expand navbar-dark navbar-lightblue"
+            style="background-image: url('../assets/login/images/bg.jpg');">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
-                <!-- <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index" class="nav-link">Home</a>
-                </li> -->
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="index" class="nav-link"><span class="text-white text-bold d-none d-xl-block"
+                            style="padding-left: 410px;">SMP NEGERI 1 BAREBBO -
+                            <?php echo date('d F Y')?> - <text id="timestamp"></text></span></a>
+                </li>
             </ul>
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
 
-                <li class="nav-item dropdown">
+                <!-- <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="far fa-user"></i>
                     </a>
@@ -107,7 +113,7 @@ to get the desired effect
                         </a>
                         <div class="dropdown-divider"></div>
                     </div>
-                </li>
+                </li> -->
 
             </ul>
         </nav>
@@ -116,9 +122,20 @@ to get the desired effect
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar elevation-4 sidebar-dark-lightblue">
             <!-- Brand Logo -->
-            <a href="index" class="brand-link navbar-lightblue">
+            <a href="index" class="brand-link navbar-lightblue" style="background-color: #32251c;">
+                <?php
+            $querylogo = $koneksi->query("SELECT * FROM tb_website");
+            foreach ($querylogo as $data) :
+            ?>
+                <?php
+                $foto = $data['logo'];
+                if ($foto === ''){?>
                 <img src="../assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
+                <?php }else{ ?>
+                <img src="../img/<?= $data['logo'] ?>" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <?php }?>
+
                 <span class="brand-text font-weight-light">SIMPERPUS</span>
             </a>
 
@@ -128,11 +145,11 @@ to get the desired effect
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
                         <?php
-          $foto = $_SESSION['foto'];
-          if ($foto===''){?>
+                        $foto = $data['logo'];
+                        if ($foto===''){?>
                         <img class="img-circle elevation-2" src="../img/anonim.png">
                         <?php } else { ?>\
-                        <img src="./img/user/<?= ucfirst($_SESSION['foto']); ?>" class="img-circle elevation-2"
+                        <img src="../img/<?= $data['logo'] ?>" class="img-circle elevation-2"
                             alt="User Image">
                         <?php }?>
 
@@ -142,4 +159,7 @@ to get the desired effect
                         <a href="index" class="d-block"><?= ucfirst($_SESSION['level']); ?></a>
                     </div>
                 </div>
+                <?php
+          endforeach; 
+          mysqli_free_result($querylogo);?>
                 <?php include 'global_navigasi.php';?>

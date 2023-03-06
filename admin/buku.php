@@ -12,22 +12,19 @@ $nama = $_SESSION['nama'];
             <div class="col-lg-12">
 
 
-                <?php
-                //menampilkan pesan jika ada pesan
-                if (isset($_SESSION['pesan']) && $_SESSION['pesan'] <> '') {
+            <?php
+  //menampilkan pesan jika ada pesan
+  if (isset($_SESSION['pesan']) && $_SESSION['pesan'] <> '') {
+  $pesan = $_SESSION['pesan']; ?>
 
-                    $pesan = $_SESSION['pesan'];
-
-                    echo '<div class="flash-data" data-flashdata="' . $_SESSION['pesan'] . '"></div>';
-                }
-                //mengatur session pesan menjadi kosong
-
-                $_SESSION['pesan'] = '';
-                // unset($_SESSION['pesan']);
-                // $cetak_pesan = '';
-                ?>
-
-
+        <div id="flash-data" data-flashdata="<?= $_SESSION['notif'];?>" data-type="<?= $_SESSION['status']; ?>"
+          data-message="<?= $_SESSION['pesan']; ?>">
+        </div>
+        <?php }//mengatur session pesan menjadi kosong
+  $_SESSION['pesan'] = '';
+  unset($_SESSION['pesan']);
+  unset($_SESSION['status']);
+  ?>
 
                 <div class="card card-lightblue">
                     <div class="card-header">
@@ -69,9 +66,9 @@ $nama = $_SESSION['nama'];
                                     <td><?php echo $data['lokasi']; ?></td>
                                     <td><?php echo $data['tanggal_input']; ?></td>
                                     <td>
-                                        <?php echo "<a  class='btn btn-primary btn-xs' href='#largeModal' class='btn btn-default btn-small' id='custId' data-toggle='modal' data-id=" . $data['id'] . "><i class='fa fa-eye'></i> Lihat</a>"; ?>
+                                        <?php echo "<a  class='btn bg-lightblue btn-xs' href='#largeModal' class='btn btn-default btn-small' id='custId' data-toggle='modal' data-id=" . $data['id'] . "><i class='fa fa-eye'></i> Lihat</a>"; ?>
                                         <a href="buku-edit?id=<?= $data['id'];?>"
-                                            class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
+                                            class="btn bg-lightblue btn-xs"><i class="fa fa-edit"></i></a>
 
                                         <a href="buku-hapus?id=<?= $data['id']; ?>"
                                             class="btn btn-danger btn-xs tombol-hapus" data-toggle="tooltip"

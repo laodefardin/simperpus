@@ -9,25 +9,24 @@ include "global_header.php";
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <?php
-                //menampilkan pesan jika ada pesan
-                if (isset($_SESSION['pesan']) && $_SESSION['pesan'] <> '') {
+            <?php
+  //menampilkan pesan jika ada pesan
+  if (isset($_SESSION['pesan']) && $_SESSION['pesan'] <> '') {
+  $pesan = $_SESSION['pesan']; ?>
 
-                    $pesan = $_SESSION['pesan'];
-
-                    echo '<div class="flash-data" data-flashdata="' . $_SESSION['pesan'] . '"></div>';
-                }
-                //mengatur session pesan menjadi kosong
-
-                $_SESSION['pesan'] = '';
-                // unset($_SESSION['pesan']);
-                // $cetak_pesan = '';
-                ?>
-                <div class="card">
+        <div id="flash-data" data-flashdata="<?= $_SESSION['notif'];?>" data-type="<?= $_SESSION['status']; ?>"
+          data-message="<?= $_SESSION['pesan']; ?>">
+        </div>
+        <?php }//mengatur session pesan menjadi kosong
+  $_SESSION['pesan'] = '';
+  unset($_SESSION['pesan']);
+  unset($_SESSION['status']);
+  ?>
+                <!-- <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Cetak Rekap Data Berdasarkan Tahun dan Bulan</h3>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body"> -->
                         <!-- <form action="page/laporan/export_laporan_buku_excel.php" method="post">
                             <div class="row form-group">
 
@@ -96,7 +95,7 @@ include "global_header.php";
                             </div>
                         </form> -->
 
-                        <form action="" id="Myform1" method="post" enctype="multipart/form-data">
+                        <!-- <form action="" id="Myform1" method="post" enctype="multipart/form-data">
                             <div class="form-group mb-3 row">
                                 <label class="form-label col-3 col-form-label">Bulan</label>
                                 <div class="col">
@@ -136,19 +135,19 @@ include "global_header.php";
                             <div class="form-footer">
                                 <input class="btn btn-success btn-sm" name="submit_excel" target="_blank" type="submit"
                                     value="Excel">
-                                <!-- <input class="btn btn-primary btn-sm" name="submit" type="submit" value="Tampilkan"> -->
+                                 <input class="btn btn-primary btn-sm" name="submit" type="submit" value="Tampilkan"> 
                                 <a style="text-align: right;" class="btn btn-danger btn-sm"
                                     href="laporan-buku">Refresh</a>
                             </div>
 
                         </form>
                     </div>
-                </div>
+                </div> -->
 
 
-                <div class="card card-default">
+                <div class="card card-lightblue">
                     <div class="card-header">
-                        <h3 class="card-title">Laporan Ganti Rugi Buku</h3>
+                        <h3 class="card-title">Cetak Report Ganti Rugi Buku</h3>
                     </div>
 
                     <!-- /.card-header -->

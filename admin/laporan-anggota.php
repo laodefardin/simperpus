@@ -9,23 +9,22 @@ include "global_header.php";
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <?php
-                //menampilkan pesan jika ada pesan
-                if (isset($_SESSION['pesan']) && $_SESSION['pesan'] <> '') {
+            <?php
+  //menampilkan pesan jika ada pesan
+  if (isset($_SESSION['pesan']) && $_SESSION['pesan'] <> '') {
+  $pesan = $_SESSION['pesan']; ?>
 
-                    $pesan = $_SESSION['pesan'];
-
-                    echo '<div class="flash-data" data-flashdata="' . $_SESSION['pesan'] . '"></div>';
-                }
-                //mengatur session pesan menjadi kosong
-
-                $_SESSION['pesan'] = '';
-                // unset($_SESSION['pesan']);
-                // $cetak_pesan = '';
-                ?>
-                <div class="card card-default">
+        <div id="flash-data" data-flashdata="<?= $_SESSION['notif'];?>" data-type="<?= $_SESSION['status']; ?>"
+          data-message="<?= $_SESSION['pesan']; ?>">
+        </div>
+        <?php }//mengatur session pesan menjadi kosong
+  $_SESSION['pesan'] = '';
+  unset($_SESSION['pesan']);
+  unset($_SESSION['status']);
+  ?>
+                <div class="card card-lightblue">
                     <div class="card-header">
-                        <h3 class="card-title">Laporan Data Anggota</h3>
+                        <h3 class="card-title">Cetak Report Data Anggota</h3>
                     </div>
 
                     <!-- /.card-header -->
@@ -60,10 +59,10 @@ include "global_header.php";
                                     <?php $nomor_urut++; endforeach; ?>
                                 </tbody>
                             </table>
-                            <form action="" method="post" enctype="multipart/form-data">
+                            <!-- <form action="" method="post" enctype="multipart/form-data">
                                 <input class="btn btn-success btn-sm" name="submit_excel" target="_blank" type="submit"
                                     value="Cetak Excel">
-                            </form>
+                            </form> -->
                         </div>
                     </div>
                 </div>

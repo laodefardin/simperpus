@@ -11,7 +11,8 @@ $hapus = "DELETE FROM tb_lokasibuku WHERE id = '$id'";
 
 $proses = $koneksi->query($hapus);
 if ($proses) {
-    $_SESSION['pesan'] = 'Hapus';
+    $_SESSION['pesan'] = 'Data Berhasil Di Hapus';
+    $_SESSION['status'] = 'success';
 }
 echo "<script> document.location.href='./lokasibuku';</script>";
 die();

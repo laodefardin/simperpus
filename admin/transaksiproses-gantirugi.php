@@ -6,7 +6,8 @@ $id = $_GET['id'];
 
 $sql = $koneksi->query("UPDATE tb_transaksi SET status='Lunas' WHERE id='$id'");
 
-$_SESSION['pesan'] = 'Kembalikan';
+$_SESSION['pesan'] = 'Data Berhasil Di Kembalikan';
+$_SESSION['status'] = 'success';
 echo "<script> document.location.href='./transaksi-gantirugi';</script>";
 
 ?>

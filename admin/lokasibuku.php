@@ -6,30 +6,29 @@ include "global_header.php";
 ?>
 <!-- Main content -->
 <div class="content">
-    <div class="container-fluid">
+<div class="container-fluid col-sm-9">
         <div class="row">
             <div class="col-lg-12">
-                <?php
-                //menampilkan pesan jika ada pesan
-                if (isset($_SESSION['pesan']) && $_SESSION['pesan'] <> '') {
+            <?php
+  //menampilkan pesan jika ada pesan
+  if (isset($_SESSION['pesan']) && $_SESSION['pesan'] <> '') {
+  $pesan = $_SESSION['pesan']; ?>
 
-                    $pesan = $_SESSION['pesan'];
-
-                    echo '<div class="flash-data" data-flashdata="' . $_SESSION['pesan'] . '"></div>';
-                }
-                //mengatur session pesan menjadi kosong
-
-                $_SESSION['pesan'] = '';
-                // unset($_SESSION['pesan']);
-                // $cetak_pesan = '';
-                ?>
-
+        <div id="flash-data" data-flashdata="<?= $_SESSION['notif'];?>" data-type="<?= $_SESSION['status']; ?>"
+          data-message="<?= $_SESSION['pesan']; ?>">
+        </div>
+        <?php }//mengatur session pesan menjadi kosong
+  $_SESSION['pesan'] = '';
+  unset($_SESSION['pesan']);
+  unset($_SESSION['status']);
+  ?>
 
 
-                <div class="card card-default">
+
+                <div class="card card-lightblue">
                     <div class="card-header">
                         <h3 class="card-title">Data Lokasi Buku</h3>
-                        <a style="text-align: right;" class="btn bg-primary btn-sm offset-md-9"
+                        <a style="text-align: right;" class="btn bg-warning btn-sm offset-md-9"
                             href="lokasibuku-tambah"> <i class="fa fa-plus"></i> Tambah Lokasi Buku</a>
                     </div>
 

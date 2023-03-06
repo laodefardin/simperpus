@@ -33,11 +33,11 @@
                         <i class="far fa-circle nav-icon"></i>
                         <p>Data Anggota</p>
                     </a>
-                    <a href="guru"
+                    <!-- <a href="guru"
                         class="nav-link <?php if($halaman == 'guru' OR $halaman == 'Edit Guru' OR $halaman == 'guru' OR $halaman == 'Tambah Guru') echo "active" ?>">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Data Guru</p>
-                    </a>
+                    </a> -->
                     <a href="lokasibuku"
                         class="nav-link <?php if($halaman == 'Tambah Lokasi Buku' OR $halaman == 'lokasi buku' OR $halaman == 'Edit Lokasi Buku') echo "active" ?>">
                         <i class="far fa-circle nav-icon"></i>
@@ -93,9 +93,9 @@
         </li>
 
         <li
-            class="nav-item has-treeview <?php if($halaman == 'Laporan Data Buku' OR $halaman == 'Laporan Data Anggota' OR $halaman == "Laporan Data Peminjaman Buku" OR $halaman == "Laporan Data Pengembalian Buku" OR $halaman == 'Laporan Ganti Rugi Buku' OR $halaman == 'Laporan Data Buku Hilang') echo 'menu-open'?>">
+            class="nav-item has-treeview <?php if($halaman == 'Laporan Data Buku' OR $halaman == 'Laporan Data Anggota' OR $halaman == "Laporan Data Peminjaman Buku" OR $halaman == "Laporan Data Pengembalian Buku" OR $halaman == 'Laporan Ganti Rugi Buku' OR $halaman == 'Laporan Data Buku Hilang' OR $halaman == 'Laporan Data Pengunjung') echo 'menu-open'?>">
             <a href="#"
-                class="nav-link <?php if($halaman == 'Laporan Data Buku' OR $halaman == 'Laporan Data Anggota' OR $halaman == 'Laporan Data Peminjaman Buku' OR $halaman == 'Laporan Data Pengembalian Buku' OR $halaman == 'Laporan Ganti Rugi Buku' OR $halaman == 'Laporan Data Buku Hilang') echo "active" ?>">
+                class="nav-link <?php if($halaman == 'Laporan Data Buku' OR $halaman == 'Laporan Data Anggota' OR $halaman == 'Laporan Data Peminjaman Buku' OR $halaman == 'Laporan Data Pengembalian Buku' OR $halaman == 'Laporan Ganti Rugi Buku' OR $halaman == 'Laporan Data Buku Hilang' OR $halaman == 'Laporan Data Pengunjung') echo "active" ?>">
                 <i class="nav-icon fas fa-copy"></i>
                 <p>
                     Laporan
@@ -104,67 +104,90 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="laporan-buku"
-                        class="nav-link <?php if($halaman == 'Laporan Data Buku') echo "active" ?>">
+                <a href="laporan-datapengunjung" class="nav-link <?php if($halaman == 'Laporan Data Pengunjung') echo "active" ?>">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Laporan Buku</p>
+                        <p>Data Pengunjung</p>
+                    </a>
+                    <a href="laporan-buku" class="nav-link <?php if($halaman == 'Laporan Data Buku') echo "active" ?>">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Report Buku</p>
                     </a>
                     <a href="laporan-anggota"
                         class="nav-link <?php if($halaman == 'Laporan Data Anggota') echo "active" ?>">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Laporan Anggota</p>
+                        <p>Report Anggota</p>
                     </a>
                     <a href="laporan-transaksi"
                         class="nav-link <?php if($halaman == 'Laporan Data Peminjaman Buku') echo "active" ?>">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Laporan Transaksi Pinjam</p>
+                        <p>Report Transaksi Pinjam</p>
                     </a>
                     <a href="laporan-transaksikembali"
                         class="nav-link <?php if($halaman == 'Laporan Data Pengembalian Buku') echo "active" ?>">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Laporan Transaksi Kembali</p>
+                        <p>Report Transaksi Kembali</p>
                     </a>
                     <a href="laporan-bukuhilang"
                         class="nav-link <?php if($halaman == 'Laporan Data Buku Hilang') echo "active" ?>">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Laporan Buku Hilang</p>
+                        <p>Report Buku Hilang</p>
                     </a>
                     <a href="laporan-gantirugi"
                         class="nav-link <?php if($halaman == 'Laporan Ganti Rugi Buku') echo "active" ?>">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Laporan Ganti Rugi Buku</p>
+                        <p>Report Ganti Rugi Buku</p>
                     </a>
                 </li>
             </ul>
         </li>
 
         <li
-            class="nav-item has-treeview <?php if($halaman == 'setting' or $halaman == 'uploadfoto' or $halaman == 'profil') echo 'menu-open'?>">
+            class="nav-item has-treeview <?php if($halaman == 'setting' or $halaman == 'Tambah Petugas' or $halaman == 'Profile' or $halaman == 'Data Website') echo 'menu-open'?>">
             <a href="#"
-                class="nav-link <?php if($halaman == 'setting' or $halaman == 'uploadfoto' or $halaman == 'profil') echo "active" ?>">
-                <i class="nav-icon fas fa-copy"></i>
+                class="nav-link <?php if($halaman == 'setting' or $halaman == 'Tambah Petugas' or $halaman == 'Profile' or $halaman == 'Data Website') echo "active" ?>">
+                <i class="nav-icon fas fa-cog"></i>
                 <p>
                     Pengaturan
-                    <i class="fas fa-angle-left right"></i>
+                    <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="setting-profil" class="nav-link <?php if($halaman == 'profil') echo "active" ?>">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Profil</p>
+            <ul
+                class="nav nav-treeview <?php if($halaman == 'Tambah Petugas' OR $halaman == 'Data Website' OR $halaman == 'Profile') echo 'menu-open'.' '.'style="display: block;"'?>">
+                <li class="nav-item <?php if($halaman == 'Profile') echo 'menu-open'?>">
+                    <a href="setting-profile" class="nav-link <?php if($halaman == 'Profile') echo "active" ?>">
+                        <!-- <i class="far fa-circle nav-icon"></i> -->
+                        <p><span style="font-weight: bold;">-</span> Profile</p>
                     </a>
-                    <a href="setting-uploadfoto" class="nav-link <?php if($halaman == 'uploadfoto') echo "active" ?>">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Upload Foto</p>
+                </li>
+                <?php
+                if ($level == 'Admin'){ ?>
+                
+                <li class="nav-item <?php if($halaman == 'setting') echo 'menu-open'?>">
+                    <a href="petugas" class="nav-link <?php if($halaman == 'Tambah Petugas') echo "active" ?>">
+                        <!-- <i class="far fa-circle nav-icon"></i> -->
+                        <p><span style="font-weight: bold;">-</span> Tambah Petugas</p>
                     </a>
-                    <a href="setting-password" class="nav-link <?php if($halaman == 'setting') echo "active" ?>">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Ubah Password</p>
+                </li>
+                <?php } ?>
+                <li
+                    class="nav-item <?php if($halaman == 'List Pengguna Admin' OR $halaman == 'Data Website') echo 'menu-open'?>">
+                    <a href="website" class="nav-link <?php if($halaman == 'Data Website') echo "active" ?>">
+                        <!-- <i class="far fa-circle nav-icon"></i> -->
+                        <p><span style="font-weight: bold;">-</span> Website</p>
                     </a>
                 </li>
             </ul>
+            <li class="" style="border-bottom: 1px solid #4f5962;"></li>
+                <li class="nav-item">
+                    <a href="../logout" class="nav-link">
+                        <i class="nav-icon fas fa-sign-out-alt mr-2"></i>
+                        <p>
+                            Logout
+                        </p>
+                    </a>
+                </li>
         </li>
+
     </ul>
 </nav>
 <!-- /.sidebar-menu -->

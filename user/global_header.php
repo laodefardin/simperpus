@@ -55,7 +55,7 @@ if ($level === "Admin"){
     <div class="wrapper">
 
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand-md navbar-dark navbar-info">
+        <nav class="main-header navbar navbar-expand-md navbar-dark navbar-info" style="background-image: url('../assets/login/images/bg.jpg');">
             <div class="container">
                 <a href="index" class="navbar-brand">
                     <span class="brand-text font-weight-light">SIMPERPUS</span>
@@ -74,10 +74,10 @@ if ($level === "Admin"){
                             <a href="index" class="btn btn-info btn-sm" class="nav-link">Dashboard</a>
                         </li> -->
                         <li class="nav-item">
-                            <a href="index" class="btn btn-info btn-sm" class="nav-link">Daftar Buku</a>
+                            <a href="index" class="btn btn-dark btn-sm" class="nav-link">Daftar Buku</a>
                         </li>
                         <li class="nav-item">
-                            <a href="daftar_pinjam" class="btn btn-info btn-sm" class="nav-link">Daftar Pinjam</a>
+                            <a href="daftar_pinjam" class="btn btn-secondary btn-sm" class="nav-link">Daftar Pinjam</a>
                         </li>
                     </ul>
                 </div>
@@ -85,7 +85,7 @@ if ($level === "Admin"){
                     <!-- Messages Dropdown Menu -->
                     <li class="nav-item dropdown">
                     <li class="nav-item">
-                    <span class="btn btn-info btn-sm"><?= $_SESSION["nama"]  ?></span>  <a href="../logout" class="btn btn-danger btn-sm" class="nav-link">Logout</a>
+                    <span class="btn btn-dark btn-sm">Selamat datang- <?= $_SESSION["nama"]  ?></span>  <a href="../logout" class="btn btn-danger btn-sm" class="nav-link">Logout</a>
                     </li>
                     </li>
                 </ul>

@@ -5,7 +5,7 @@ include "global_header.php"; ?>
 <!-- Main content -->
 
 <div class="content">
-    <div class="container-fluid">
+    <div class="container-fluid col-7">
         <div class="row">
             <div class="col-lg-12">
 
@@ -66,7 +66,8 @@ $id = $_GET['id'];
 
     $sql = mysqli_query($koneksi, $update) or die(mysqli_error($koneksi));
     
-    $_SESSION['pesan'] = 'Ubah';
+    $_SESSION['pesan'] = 'Data Berhasil Di Ubah';
+    $_SESSION['status'] = 'success';
     echo "<script> document.location.href='./anggota';</script>";
             }
 ?>

@@ -26,7 +26,8 @@ if ($lambat >0) {
 			$sql = $koneksi->query("UPDATE tb_transaksi SET tanggal_kembali='$hari_next' WHERE id='$id'");
 			
 		if($sql){
-            $_SESSION['pesan'] = 'Di Perpanjangan';
+			$_SESSION['pesan'] = 'Data Berhasil Di Perpanjangan';
+			$_SESSION['status'] = 'success';
 echo "<script> document.location.href='./transaksi';</script>";
 				?>
 <?php

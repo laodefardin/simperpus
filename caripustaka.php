@@ -26,18 +26,39 @@ include 'koneksi.php';
     <link rel="stylesheet" href="assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <!-- <link rel="icon" href="favicon.ico" type="image/x-icon" /> -->
+    <link rel="icon" href="assets/icon.jpg" class="img-circle" type="image/x-icon" />
 </head>
+<style>
+    .container {
+        max-width: 1300px;
+    }
 
-<body class="hold-transition layout-top-nav">
+    .content-wrapper {
+        background: #ffffff;
+    }
+</style>
+
+<body class="hold-transition layout-top-nav accent-dark">
     <div class="wrapper">
 
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand-md navbar-dark navbar-info">
+        <nav class="main-header navbar navbar-expand-md navbar-dark navbar-warning"
+            style="background-image: url('./assets/login/images/bg.jpg');">
             <div class="container">
                 <a href="index" class="navbar-brand">
-                    <span class="brand-text font-weight-light">SIMPERPUS - Sistem Informasi Perpustakaan Sekolah
-                        Menengah Kejuruan</span>
+                    <span class="brand-text font-weight-light text-white">SIMPERPUS - Sistem Informasi Perpustakaan
+                        Sekolah
+                        <?php
+    $quer = $koneksi->query("SELECT * FROM tb_website");
+    foreach ($quer as $data) : 
+    ?>
+                        <?= $data['school_name']?>
+
+                        <?php
+                endforeach; 
+                mysqli_free_result($quer);
+                ?></span>
                 </a>
 
                 <button class="navbar-toggler order-1" type="button" data-toggle="collapse"
@@ -79,13 +100,28 @@ include 'koneksi.php';
                 </div><!-- /.container-fluid -->
 
             </div>
+
+            <div class="content-header">
+                <div class="container col-sm-7">
+
+                    <div class="col-sm-11">
+                        <!-- <h1 class="m-0 text-dark"> Cari Pustaka <small>Informasi Data Pustaka</small></h1> -->
+                        <div class="form-group text-left">
+                            <a href="index" class="btn bg-lightblue btn-sm"> Login</a>
+                            <a href="isi-datapengunjung" class="btn bg-lightblue btn-sm"> Isi Data Pengunjung</a>
+                        </div>
+
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+
+            </div>
             <!-- /.content-header -->
 
 
             <!-- Main content -->
             <div class="content">
                 <div class="container">
-                    <div class="card card-primary">
+                    <div class="card card-danger">
 
                         <div class="col-xs-12" style="margin: 10px 0 0 0;">
                             <div class="box-tools">
@@ -102,7 +138,7 @@ include 'koneksi.php';
                         </div>
 
                         <!-- /.card-header -->
-                        <div class="card-body">
+                        <div class="card-body" enable-extended-color-palette="false">
                             <table id="example2" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -140,13 +176,14 @@ include 'koneksi.php';
                             $pesan = "Tersedia";
                             }
                             ?>
-                    <span class="label label-<?php echo $label; ?>"><?php echo $pesan; ?></span>
+                                            <span class="label label-<?php echo $label; ?>"><?php echo $pesan; ?></span>
                                         </td>
                                         <td><?= $data['lokasi']?></td>
                                         <td>
-                                            <?php echo "<a  class='btn btn-info btn-xs' href='#largeModal' class='btn btn-default btn-small' id='custId' data-toggle='modal' data-id=" . $data['id'] . "><i class='fa fa-eye'></i> Lihat </a>"; ?>
-                                        
-                                            <a href="user/pinjam_buku?id=<?= $data['id'];?>" class="btn btn-primary btn-xs">Pinjam</a>
+                                            <?php echo "<a  class='btn btn-dark btn-xs' href='#largeModal' class='btn btn-default btn-small' id='custId' data-toggle='modal' data-id=" . $data['id'] . "><i class='fa fa-eye'></i> Lihat </a>"; ?>
+
+                                            <a href="user/pinjam_buku?id=<?= $data['id'];?>"
+                                                class="btn btn-secondary btn-xs">Pinjam</a>
                                         </td>
                                     </tr>
                                     <?php
@@ -172,7 +209,7 @@ include 'koneksi.php';
                                     <div class="modal-footer">
                                         <button class="btn btn-secondary" type="button"
                                             data-dismiss="modal">Close</button>
-                                        
+
                                     </div>
                                 </div>
 
@@ -194,10 +231,20 @@ include 'koneksi.php';
                 <div class='container'>
                     <!-- To the right -->
                     <div class="float-right d-none d-sm-inline">
-                        Anything you want
+                        <!-- Anything you want -->
                     </div>
                     <!-- Default to the left -->
-                    <strong>Copyright &copy; 2021 <a href="">SIMPERPUS - Sistem Informasi Perpustakaan Sekolah Menengah Kejuruan</a>.</strong> All rights
+                    <strong>Copyright &copy; <?= date('Y'); ?> <a href="">SIMPERPUS - Sistem Informasi Perpustakaan
+                            Sekolah <?php
+    $quer = $koneksi->query("SELECT * FROM tb_website");
+    foreach ($quer as $data) : 
+    ?>
+                            <b><?= $data['school_name']?></b>
+
+                            <?php
+                endforeach; 
+                mysqli_free_result($quer);
+                ?></a>.</strong> All rights
                     reserved.
                 </div>
             </footer>
@@ -263,16 +310,16 @@ include 'koneksi.php';
             });
         });
     </script>
-      <script>
-    $(document).ready(function() {
-      $("#myInput").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("#myTable tr").filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
         });
-      });
-    });
-  </script>
+    </script>
 </body>
 
 </html>

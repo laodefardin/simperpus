@@ -107,7 +107,8 @@ $kembali = date("Y-m-d", $tujuh_hari);
                     $sql2 = $koneksi->query("UPDATE tb_buku SET jumlah_buku=(jumlah_buku-1) WHERE id='$id'");
 
                     if ($proses){
-                        $_SESSION['pesan'] = 'Tambah';
+                        $_SESSION['pesan'] = 'Data Berhasil Di Tambah';
+                        $_SESSION['status'] = 'success';
                         echo "<script> document.location.href='./transaksi';</script>";
                     }
             }

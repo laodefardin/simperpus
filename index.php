@@ -1,4 +1,4 @@
-<?php
+<?php   
 //buat koneksi ke mysql dari file config.php
 if (isset($_POST["submit"])) {
   // form telah disubmit, proses data
@@ -40,15 +40,13 @@ $akun = $sql->fetch_assoc();
     $level = $akun["level"];
     if($level === 'Siswa'){
         echo "<script> document.location.href='user/index'; </script>";
-    }elseif($level === 'Guru'){
-        echo "<script> document.location.href='guru/index'; </script>";
+    }elseif($level === 'Petugas'){
+        echo "<script> document.location.href='admin/index'; </script>";
     }else{
         echo "<script> document.location.href='admin/index'; </script>";
     }
 }else{
-    $_SESSION['pesan'] = '<div class="alert alert-danger alert-dismissible">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-    <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+    $_SESSION['pesan'] = '<div class="alert alert-danger alert-dismissible text-center pr-3">
     Username dan Password Tidak ditemukan
     </div>';
 }
@@ -57,47 +55,55 @@ else{
   $username = "";
   $password = "";
 }
+
+include("koneksi.php");
+$quer = $koneksi->query("SELECT * FROM tb_website");
+foreach ($quer as $data) : 
 ?>
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Login | SIMPERPUS</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Login | SIMPERPUS</title>
+	<meta charset="utf-8">
+	<meta content='width=device-width, initial-scale=1.0, user-scalable=1.0, minimum-scale=1.0, maximum-scale=5.0' name='viewport'/>
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> -->
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="assets/plugins/fontawesome-free/css/all.min.css">
+
+	<link rel="stylesheet" href="assets/login/css/style.css">
+	<link rel="icon" href="assets/icon.jpg" class="img-circle" type="image/x-icon" />
+
 </head>
-<style>
-    #iconeye {
-        cursor: pointer;
-    }
-</style>
 
-<body class="hold-transition login-page">
-    <div class="login-box">
-        <div class="login-logo">
-            <div class="login-logo">
-                <a href="#"><h1><b>SIM</b>PERPUS</a></h1>
-            </div>
-            <div class="lead" style="font-size: 20px;">
-                Sistem Informasi Perpustakaan <br> Sekolah Menengah Kejuruan
-            </div>
+<body class="img js-fullheight" style="background-image: url(assets/login/images/bg.jpg);">
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-2">
+					<!-- <h2 class="heading-section">SIMPERPUS</h2> -->
+					<h1 class=""><a href="index"><b>SIM</b>PERPUS</a></h1>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-8 col-lg-4">
+					<div class="login-wrap p-0">
+						<h4 class="text-center text-white">Sistem Informasi Perpustakaan</h4>
+						<h5 class="mb-4 text-center text-white">
 
-        </div>
-        <?php
+    <?= $data['school_name']?>
+    
+            <?php
+                endforeach; 
+                
+                ?>
+
+						</h5>
+						<?php
                 //menampilkan pesan jika ada pesan
                 if (isset($_SESSION['pesan']) && $_SESSION['pesan'] <> '') {
                     echo $pesan = $_SESSION['pesan'];
@@ -106,95 +112,45 @@ else{
                 //mengatur session pesan menjadi kosong
                 $_SESSION['pesan'] = '';
                 ?>
+						<form action="" method="post" class="signin-form">
+							<div class="form-group">
+								<input type="username" class="form-control" placeholder="Username" name="username" id="username"
+									value="<?php echo $username ?>" required>
+							</div>
+							<div class="form-group">
+								<input type="password" id="password" class="form-control" name="password" placeholder="Password"
+									value="<?php echo $password ?>" required>
+								<span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+							</div>
+							<div class="form-group">
+								<button type="submit" name="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
+								<!-- <button type="submit" name="submit" class="btn btn-info btn-block">Masuk</button> -->
+							</div>
+							<div class="form-group d-md-flex">
+								<div class="w-100">
+									<a href="isi-datapengunjung"><i class="fa fa-book"></i> Isi Data Pengunjung</a>
+								</div>
+								<div class="w-50 text-md-right">
+									<a href="caripustaka"><i class="fa fa-search"></i> Cari Pustaka</a>
+								</div>
+							</div>
+						</form>
+						<!-- <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p> -->
+						<!-- <div class="social d-flex text-center">
+	          	<a href="#" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Facebook</a>
+	          	<a href="#" class="px-2 py-2 ml-md-1 rounded"><span class="ion-logo-twitter mr-2"></span> Twitter</a>
+	          </div> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-        <!-- /.login-logo -->
-        <div class="card">
-            <div class="card-body login-card-body">
-                <p class="login-box-msg">Silahkan Login disini.</p>
+	<script src="assets/login/js/jquery.min.js"></script>
+	<script src="assets/login/js/popper.js"></script>
+	<script src="assets/login/js/bootstrap.min.js"></script>
+	<script src="assets/login/js/main.js"></script>
 
-                <form action="" method="post">
-                    <div class="input-group mb-3">
-                        <input type="username" class="form-control" placeholder="Username" name="username" id="username"
-                            value="<?php echo $username ?>">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="password" id="password" class="form-control" name="password" placeholder="Password"
-                            value="<?php echo $password ?>">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span id="iconeye" onclick="show()">
-                                    <i class="fas fa-eye"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        
-                        <div class="col-12">
-                            <button type="submit" name="submit" class="btn btn-info btn-block">Masuk</button>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                </form>
-
-                <div class="social-auth-links text-right mb-3">
-                    <!-- <a href="../pengunjung/pengunjung.php" class="btn btn-default btn-sm btn-flat"><i class="fa fa-user-secret"></i> Data Kunjungan</a> -->
-                    <a href="caripustaka" class="btn btn-default btn-sm btn-flat pull-right"><i class="fa fa-search"></i>
-                        Cari Pustaka
-                    </a>
-                    <br>
-                </div>
-
-                <!--                 
-                <p class="mb-1">
-                    <a href="forgot-password.html">I forgot my password</a>
-                </p>
-                <p class="mb-0">
-                    <a href="register.html" class="text-center">Register a new membership</a>
-                </p> -->
-            </div>
-
-            <!-- /.login-card-body -->
-        </div>
-
-        <!-- jQuery -->
-        <script src="assets/plugins/jquery/jquery.min.js"></script>
-        <!-- Bootstrap 4 -->
-        <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- AdminLTE App -->
-        <script src="assets/dist/js/adminlte.min.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('#largeModal').on('show.bs.modal', function (e) {
-                    var rowid = $(e.relatedTarget).data('id');
-                    //menggunakan fungsi ajax untuk pengambilan data
-                    $.ajax({
-                        type: 'post',
-                        url: 'detailkontak.php',
-                        data: 'rowid=' + rowid,
-                        success: function (data) {
-                            $('.fetched-data').html(data); //menampilkan data ke dalam modal
-                        }
-                    });
-                });
-            });
-        </script>
-        <script>
-            function show() {
-                var nilai = document.getElementById('password').type;
-                if (nilai == 'password') {
-                    document.getElementById('password').type = 'text';
-                    document.getElementById('iconeye').innerHTML = '<i class= "fas fa-eye-slash"></i>';
-                } else {
-                    document.getElementById('password').type = 'password';
-                    document.getElementById('iconeye').innerHTML = '<i class= "fas fa-eye"></i>';
-                }
-            }
-        </script>
 </body>
 
 </html>

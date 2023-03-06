@@ -18,7 +18,8 @@ if(empty($img)){
     $update = "UPDATE tb_buku SET judul='$judul', pengarang='$pengarang', penerbit='$penerbit', tahun_terbit='$tahun', isbn='$isbn', jumlah_buku='$jumlah', lokasi='$lokasi', tanggal_input='$tanggal' WHERE id = '".$id."' ";
 
     $sql = mysqli_query($koneksi, $update);
-    $_SESSION['pesan'] = 'Ubah';
+    $_SESSION['pesan'] = 'Data Berhasil Di Ubah';
+    $_SESSION['status'] = 'success';
     echo "<script> document.location.href='./buku';</script>";
 }else{
     $query = $koneksi->query("SELECT * FROM tb_buku WHERE id = '$_GET[id]' ");
@@ -31,6 +32,7 @@ if(empty($img)){
 
     $update = "UPDATE tb_buku SET judul='$judul', pengarang='$pengarang', penerbit='$penerbit', tahun_terbit='$tahun', isbn='$isbn', jumlah_buku='$jumlah', lokasi='$lokasi', tanggal_input='$tanggal', gambar='$img' WHERE id = '".$id."' ";
     $sql = mysqli_query($koneksi, $update) or die(mysqli_error($koneksi));
-    $_SESSION['pesan'] = 'Ubah';
+    $_SESSION['pesan'] = 'Data Berhasil Di Ubah';
+    $_SESSION['status'] = 'success';
     echo "<script> document.location.href='./buku';</script>";
 }

@@ -13,7 +13,8 @@ $hapus_user = "DELETE FROM tb_pengguna WHERE nis = '$id'";
 $proses = $koneksi->query($hapus);
 $koneksi->query($hapus_user);
 if ($proses) {
-    $_SESSION['pesan'] = 'Hapus';
+    $_SESSION['pesan'] = 'Data Berhasil Di Hapus';
+    $_SESSION['status'] = 'success';
 }
 echo "<script> document.location.href='./guru';</script>";
 die();

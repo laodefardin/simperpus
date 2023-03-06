@@ -66,7 +66,8 @@ $id = $_GET['id'];
 
     $sql = mysqli_query($koneksi, $update) or die(mysqli_error($koneksi));
     
-    $_SESSION['pesan'] = 'Ubah';
+    $_SESSION['pesan'] = 'Data Berhasil Di Ubah';
+    $_SESSION['status'] = 'success';
     echo "<script> document.location.href='./guru';</script>";
             }
 ?>

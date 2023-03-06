@@ -1,13 +1,34 @@
-const flashData = $('.flash-data').data('flashdata');
-// console.log(flashData);
+// const flashData = $('.flash-data').data('flashdata');
+// // console.log(flashData);
 
-if (flashData) {
-    Swal.fire(
-        'Selamat Data...',
-        'Berhasil di ' + flashData,
-        'success'
-    );
-}
+// if (flashData) {
+//     Swal.fire(
+//         'Selamat Data...',
+//         'Berhasil di ' + flashData,
+//         'success'
+//     );
+// }
+
+// const flashData1 = $('.flash-dataa').data('flashdata');
+// if (flashData1) {
+//     Swal.fire(
+//         ' ' + flashData1,
+//         'success'
+//     );
+// }
+
+const flashData = document.getElementById("flash-data");
+    if(flashData) {
+
+      const notifType = flashData.getAttribute('data-type');
+      const notifMsg = flashData.getAttribute('data-message');
+
+      Swal.fire({
+        title: notifType,
+        text: notifMsg,
+        icon: notifType,
+      });
+    }
 
 // tombol-hapus
 $('.tombol-hapus').on('click',
@@ -30,6 +51,48 @@ $('.tombol-hapus').on('click',
         })
     });
 
+    // tombol-batalkan
+$('.tombol-batalkan').on('click',
+function (e) {
+    e.preventDefault();
+    const href = $(this).attr('href');
+
+    Swal.fire({
+        title: 'Apakah anda yakin?',
+        text: "data akan dibatalkan!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, batalkan!'
+    }).then((result) => {
+        if (result.value) {
+            document.location.href = href;
+        }
+    })
+});
+
+// tombol-validasi
+$('.tombol-validasi').on('click',
+    function (e) {
+        e.preventDefault();
+        const href = $(this).attr('href');
+
+        Swal.fire({
+            title: 'Apakah anda yakin?',
+            text: "data akan divalidasi!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya'
+        }).then((result) => {
+            if (result.value) {
+                document.location.href = href;
+            }
+        })
+    });
+
 // tombol-hapus
 $('.tombol-kembali').on('click',
     function (e) {
@@ -38,7 +101,7 @@ $('.tombol-kembali').on('click',
 
         Swal.fire({
             title: 'Anda yakin?',
-            text: "Apakah benar buku ini sudah dikembalikan?",
+            text: "Apakah benar Tools ini sudah dikembalikan?",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',

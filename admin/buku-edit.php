@@ -5,7 +5,7 @@ include "global_header.php"; ?>
 
 <!-- Main content -->
 <div class="content">
-    <div class="container-fluid">
+    <div class="container-fluid col-9">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
@@ -19,7 +19,7 @@ include "global_header.php"; ?>
                         <form action="buku-prosesedit.php?id=<?= $_GET['id'];?>" method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <img src="./img/buku/<?= $data['gambar']; ?>" style=" width: 350px;" alt="">
+                                    <img src="./img/buku/<?= $data['gambar']; ?>" style=" height: 350px;" alt="">
                                     <div class="form-group">
                                         <label for="foto">Ganti Foto Buku</label>
                                         <div class="custom-file">
