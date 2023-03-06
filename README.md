@@ -2,6 +2,10 @@ Halaman Login
 
 ![1](https://user-images.githubusercontent.com/22639765/223026281-f4e912c6-5825-432e-bbd4-1cc17c822799.jpg)
 
+LOGIN ADMIN \
+username: admin \
+password: admin 
+
 Halaman Dashboard Admin
 ![2](https://user-images.githubusercontent.com/22639765/223026437-1c60e2b6-0b6b-4377-9b81-2b5c20fba7d8.jpg)
 
