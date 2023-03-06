@@ -1,5 +1,13 @@
-Halaman Login
+Sistem perpustakaan ini juga memiliki fungsi yang tidak ada di aplikasi yang lainya , seperti pengelolaan anggota berdasarkan kategori perpustakaan , Pengelolaan denda masa peminjaman buku yang dapat diatur secara dinamis sesuai dengan keanggotaan.
 
+Dengan menggunakan aplikasi ini pengunjung perpustakaan tidak perlu bersusah payah untuk mencari buku perpustakaan yang diminatinya, lewat menu pencarian pengunjung perpustakaan / anggota perpustakaan dapat dengan mudah mendapatkan buku yang dicari , buku yang tersedia di perpustakaan.
+
+aplikasi ini sudah memiliki standar aplikasi perpustakaan , memiliki fitur yang lengkap untuk anda gunakan langsung secara online maupun offline , dapat diguanakan di sistem jaringan lokal (LAN) dan sistem jaringan lainya, tersedia halaman user dan halaman administrator.
+
+Menggunakan Bahasa Pemrograman PHP Native, PHP versi 7.4.33
+
+
+Halaman Login
 ![1](https://user-images.githubusercontent.com/22639765/223026281-f4e912c6-5825-432e-bbd4-1cc17c822799.jpg)
 
 LOGIN ADMIN \
