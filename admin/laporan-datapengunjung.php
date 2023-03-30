@@ -39,6 +39,7 @@ include "global_header.php";
                                         <th>No HandPhone</th>
                                         <th>Kelas</th>
                                         <th>Tanggal berkunjung</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -52,6 +53,12 @@ include "global_header.php";
                                         <td><?php echo $data['nohp']; ?></td>
                                         <td><?php echo $data['kelas']; ?></td>
                                         <td><?php echo $data['tanggal']; ?></td>
+                                        <td>
+                                        <a href="laporan-user-hapus?id=<?= $data['id']; ?>"
+                                            class="btn btn-danger btn-xs tombol-hapus" data-toggle="tooltip"
+                                            data-placement="top" title="" data-original-title="Hapus"><i
+                                                class="fa fa-trash"></i></a>
+                                        </td>
                                     </tr>
                                     <?php $nomor_urut++; endforeach; ?>
                                 </tbody>
