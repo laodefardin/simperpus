@@ -26,5 +26,5 @@ Halaman Database Buku
 
 
 
-Created: https://www.instagram.com/laode.fardin/
+
 
