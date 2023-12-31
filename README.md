@@ -1,3 +1,5 @@
+Simperpus - Sistem Informasi Perpustakaan SMP 1 Barebbo
+
 Sistem perpustakaan ini juga memiliki fungsi yang tidak ada di aplikasi yang lainya , seperti pengelolaan anggota berdasarkan kategori perpustakaan , Pengelolaan denda masa peminjaman buku yang dapat diatur secara dinamis sesuai dengan keanggotaan.
 
 Dengan menggunakan aplikasi ini pengunjung perpustakaan tidak perlu bersusah payah untuk mencari buku perpustakaan yang diminatinya, lewat menu pencarian pengunjung perpustakaan / anggota perpustakaan dapat dengan mudah mendapatkan buku yang dicari , buku yang tersedia di perpustakaan.
